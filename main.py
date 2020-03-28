@@ -10,17 +10,17 @@ def home():
 def analyze():
   if request.method == 'POST':
     features = []
-    """ 
-      get features from request.form[]
-      analyze stuff 
-    """
+
+    """ get features from request.form[]
+        analyze stuff """
+        
     return render_template('output.html', features=features)
     # return redirect(url_for('output.html', features=features))
   elif request.method == 'GET':
     features = []
-    """ 
-      get features from request.args.get()
-    """
+
+    """ get features from request.args.get() """
+
     return render_template('output.html', features=features)
     # return redirect(url_for('output.html', features=features))
 
