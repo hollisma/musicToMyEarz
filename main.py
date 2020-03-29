@@ -25,9 +25,5 @@ def analyze():
     return render_template('output.html', features=features)
     # return redirect(url_for('output.html', features=features))
 
-@app.route('/hello/<name>')
-def hello(name):
-  return render_template('hello.html', name=name)
-
 if __name__ == '__main__':
   app.run()
