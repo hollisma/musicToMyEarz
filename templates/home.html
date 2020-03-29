@@ -62,9 +62,20 @@
   </head>
 
   <body class='container'>
+    <script>
+      let goToAboutPage = () => {
+        let url = 'http://localhost:5000/about'
+        let http = new XMLHttpRequest()
+        http.open("GET", url, true)
+        http.send()
+      }
+    </script>
+    <button onclick="goToAboutPage()">About MusicToMyEarz</button>
+
     <form action="http://localhost:5000/analyze" method="post" class='form'> 
       <h2 style='margin-bottom:40px;'>Welcome to MusicToMyEarz!</h2> 
-      <p>Name: <input type="text" name="name" /></p> 
+      
+      <p>Name of Song: <input type="text" name="name" /></p> 
       <!-- <p>Genre: <input type="text" name="genre" /></p>  -->
       <p>Genre: </p> 
       <p>
