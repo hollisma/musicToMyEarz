@@ -29,7 +29,7 @@ def analyze():
     If mode is 1 (major), then ('mode', 1) is in request.form dict
     If mode is 0 (minor), then 'mode' is not a key in the request.form dict
     """
-    if request.form.has_key('mode') == True:
+    if 'mode' in request.form:
       features['mode'] = request.form['mode']
     else:
       features['mode'] = 0
@@ -42,7 +42,7 @@ def analyze():
     features['valence'] = int(request.form['valence']) 
 
     
-    predict_popularity_value = predict.predict_pop(features)
+    predict_popularity_value = str(predict.predict_pop(features))
     return render_template('output.html', features = features, popularity=predict_popularity_value)
     # return redirect(url_for('output.html', features=features))
   elif request.method == 'GET':
