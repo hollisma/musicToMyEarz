@@ -9,10 +9,11 @@ def home():
 @app.route('/analyze', methods=['POST', 'GET'])
 def analyze():
   if request.method == 'POST':
-    features = []
+    features = {}
 
     """ get features from request.form[]
         analyze stuff """
+    features['name'] = request.form['name'] + ', ' if request.form['name'] != None else ''
         
     return render_template('output.html', features=features)
     # return redirect(url_for('output.html', features=features))
@@ -24,26 +25,9 @@ def analyze():
     return render_template('output.html', features=features)
     # return redirect(url_for('output.html', features=features))
 
-
-# Below are just test routes
-
 @app.route('/hello/<name>')
 def hello(name):
-  # return 'Hello %s!' % name
   return render_template('hello.html', name=name)
-
-@app.route('/')
-def login():
-  return render_template('login.html')
-
-@app.route('/action-login', methods=['POST', 'GET'])
-def action_login():
-  if request.method == 'POST':
-    user = request.form['name']
-    return redirect(url_for('hello', name=user))
-  elif request.method == 'GET':
-    user = request.args.get('name')
-    return redirect(url_for('hello', name=user))
 
 if __name__ == '__main__':
   app.run()
