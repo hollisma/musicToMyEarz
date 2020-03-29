@@ -1,4 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
+import predict
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -23,12 +25,28 @@ def analyze():
     features['key'] = request.form['key']
     features['liveness'] = int(request.form['liveness']) 
     features['loudness'] = int(request.form['loudness']) 
-    features['mode'] = request.form['mode'] 
+    """
+    If mode is 1 (major), then ('mode', 1) is in request.form dict
+    If mode is 0 (minor), then 'mode' is not a key in the request.form dict
+    """
+    if request.form.has_key('mode') == True:
+      features['mode'] = request.form['mode']
+    else:
+      features['mode'] = 0
     features['speechiness'] = int(request.form['speechiness']) 
     features['tempo'] = int(request.form['tempo']) 
+    """
+    Time sig: x/4 -> x
+    """
     features['time_signature'] = int(request.form['time_signature'])
     features['valence'] = int(request.form['valence']) 
 
+    """
+    Turn features dict into appropriate numpy array
+    Load joblib file
+    Do prediction
+    """
+    predict_populatrity_value = predict.predict_pop(features)
     return render_template('output.html', features=features)
     # return redirect(url_for('output.html', features=features))
   elif request.method == 'GET':
