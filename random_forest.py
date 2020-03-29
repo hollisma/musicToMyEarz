@@ -65,7 +65,5 @@ def train_rforestreg_whole():
     rand_forest.fit(X_train, y_train)
     return rand_forest
 
-
-def dump_rforestreg():
-    rand_forest = train_rforestreg_whole()
-    joblib.dump(rand_forest, 'rand_forest.joblib.compress', compress = ('zlib', 5))
+rand_forest = train_rforestreg_whole()
+joblib.dump(rand_forest, 'rand_forest.joblib')
