@@ -60,7 +60,7 @@ return the predicted popularity value
 def predict_pop(features):
     # user_ft_arr should have shape (1,28)
     user_ft_arr = ft_dict_to_arr(features)
-    rand_forest = joblib.load('rand_forest.joblib.compress')
+    rand_forest = joblib.load('rand_forest.joblib')
     prediction = rand_forest.predict(user_ft_arr)
     # prediction is a (1,) numpy array
     # Returns float value truncated to 3 decimal points

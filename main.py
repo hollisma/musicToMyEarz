@@ -41,13 +41,9 @@ def analyze():
     features['time_signature'] = int(request.form['time_signature'])
     features['valence'] = int(request.form['valence']) 
 
-    """
-    Turn features dict into appropriate numpy array
-    Load joblib file
-    Do prediction
-    """
-    predict_populatrity_value = predict.predict_pop(features)
-    return render_template('output.html', features=features)
+    
+    predict_popularity_value = predict.predict_pop(features)
+    return render_template('output.html', features = features, popularity=predict_popularity_value)
     # return redirect(url_for('output.html', features=features))
   elif request.method == 'GET':
     features = []
