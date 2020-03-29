@@ -59,14 +59,10 @@ def mode_to_binary_col(df):
     return df
 
 
-
-
 """
-The function preprocesses the dataframe. Then returns a dictionary
-of key: genre and value: dataframe of songs of only that genre
-
+The function returns the processed dataframe.
 """
-def get_stratified_df():
+def get_processed_df():
     # Read CSV
     df_orig = pd.read_csv("data/SpotifyFeatures.csv")
     # list of functions that modify df
@@ -74,6 +70,16 @@ def get_stratified_df():
     df = df_orig
     for f in funcs:
         df = f(df)
+    return df
+
+"""
+Uses processed df.
+The function returns a dictionary
+of key: genre and value: dataframe of songs of only that genre
+
+"""
+def get_stratified_df():
+    df = get_processed_df()
     # Separate larger dataframe into dataframes of all of one category
     # dictionary that maps genre to the dataframe that only has songs of that genre
     df_by_genre = dict()
