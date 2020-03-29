@@ -8,3 +8,12 @@ node_modules
 package-lock.json
 css
 js
+
+# ensure joblib file is not tracked
+# file is too large to push to github
+rand_forest.joblib
+
+# below are joblib files that
+# should not be tracked
+fst_row_attributes.joblib
+x_test.joblib
