@@ -1,29 +1,76 @@
 <html>
   <head>
     <title>musicToMyEarz</title>
-      <meta name = "viewport" content = "width = device-width, initial-scale = 1">   
-      <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
-      <style>
-        p {
-          font-size: 20px;
-        }
-        .keys {
-          display: flex;
-        }
-        .key {
-          padding-right: 25px;
-        }
-      </style>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1" charset = "UTF-8">   
+    <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+    <style>
+      p {
+        font-size: 20px;
+      }
+      .keys {
+        display: flex;
+      }
+      .key {
+        margin-right: 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        height: 20px;
+        width: 20px;
+        margin: -10px 0 0 0;
+      }
+      .submit {
+        font-size: 20px;
+        height: 100px !important;
+        width: 100px !important;
+        border-radius: 100%;
+      }
+      .center {
+        padding-top: 50px;
+        align-content: center;
+      }
+    </style>
   </head>
 
   <body class='container' style='padding-top:50px;padding-bottom:100px;'>
     <form action="http://localhost:5000/analyze" method="post"> 
       <h2 style='margin-bottom:40px;'>Welcome to MusicToMyEarz!</h2> 
       <p>Name: <input type="text" name="name" /></p> 
-      <p>Genre: <input type="text" name="genre" /></p> 
-      <!-- <p>Acousticness: <input type="text" name="acousticness" /></p>  -->
+      <!-- <p>Genre: <input type="text" name="genre" /></p>  -->
+      <p>Genre: </p> 
+      <p>
+        <select id="myList" name="genre" class="browser-default">
+          <option value="Jazz">Jazz</option>
+          <option value="Movie">Movie</option>
+          <option value="R&B">R&B</option>
+          <option value="A Capella">A Capella</option>
+          <option value="Alternative">Alternative</option>
+          <option value="Country">Country</option>
+          <option value="Dance">Dance</option>
+          <option value="Electronic">Electronic</option>
+          <option value="Anime">Anime</option>
+          <option value="Folk">Folk</option>
+          <option value="Blues">Blues</option>
+          <option value="Opera">Opera</option>
+          <option value="Hip-Hop">Hip-Hop</option>
+          <option value="Children's Music">Children's Music</option>
+          <option value="Rap">Rap</option>
+          <option value="Indie">Indie</option>
+          <option value="Classical">Classical</option>
+          <option value="Pop">Pop</option>
+          <option value="Reggae">Reggae</option>
+          <option value="Reggaeton">Reggaeton</option>
+          <option value="Rock">Rock</option>
+          <option value="Ska">Ska</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Soul">Soul</option>
+          <option value="Soundtrack">Soundtrack</option>
+          <option value="World">World</option>
+        </select>
+      </p>
       <p class="range-field">Acousticness: 
         <input type="range" name="acousticness" min="0" max="100" />
       </p>
@@ -31,7 +78,7 @@
         <input type="range" name="danceability" min="0" max="100" />
       </p> 
       <p class="range-field">Duration (in sec): 
-        <input type="text" name="duration" />
+        <input type="range" name="duration" min="0" max="600" />
       </p> 
       <p class="range-field">Energy: 
         <input type="range" name="energy" min="0" max="100" />
@@ -39,80 +86,156 @@
       <p class="range-field">Instrumentalness: 
         <input type="range" name="instrumentalness" min="0" max="100" />
       </p> 
-      <!-- <p>Key: <input type="text" name="key" /></p>  -->
-      <p class="range-field" style="margin-bottom:0">Key:  </p>
-      <div class="keys">
-        <p class="key">
-          <input class="with-gap" name="key" value="C" type="radio" checked />
-          <span>C</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="C#" type="radio" />
-          <span>C#</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="D" type="radio" />
-          <span>D</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="D#" type="radio" />
-          <span>D#</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="E" type="radio" />
-          <span>E</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="F" type="radio" />
-          <span>F</span>
-        </p>
-      </div>
-      <div class="keys">
-        <p class="key">
-          <input class="with-gap" name="key" value="F#" type="radio" />
-          <span>F#</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="G" type="radio" />
-          <span>G</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="G#" type="radio" />
-          <span>G#</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="A" type="radio" />
-          <span>A</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="A#" type="radio" />
-          <span>A#</span>
-        </p>
-        <p class="key">
-          <input class="with-gap" name="key" value="B" type="radio" />
-          <span>B</span>
-        </p>
-      </div>
       <p class="range-field">Liveness: 
         <input type="range" name="liveness" min="0" max="100" />
       </p>
       <p class="range-field">Loudness: 
         <input type="range" name="loudness" min="0" max="100" />
       </p> 
-      <p>Mode: <input type="text" name="mode" /></p> 
       <p class="range-field">Speechiness: 
         <input type="range" name="speechiness" min="0" max="100" />
       </p> 
       <p class="range-field">Tempo: 
-        <input type="range" name="tempo" min="0" max="100" />
-      </p> 
-      <p class="range-field">Time Signature: 
-        <input type="range" name="time_signature" min="0" max="100" />
+        <input type="range" name="tempo" min="0" max="242" />
+        <!-- <input type="range" name="tempo" min="0" max="242" oninput="tempoOutput.value=tempo.value" />
+        <output name="tempoOutputName" id="tempoOutput">121</output> -->
       </p> 
       <p class="range-field">Valence: 
         <input type="range" name="valence" min="0" max="100" />
       </p> 
-      <p><input type="submit" value="submit" /></p> 
+      <p style="margin-bottom:10px">Key: </p>
+      <div class="keys">
+        <p class="key">
+          <label>
+            <input id="C" class="with-gap" name="key" value="C" type="radio" checked />
+            <span>C</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="C#" class="with-gap" name="key" value="C#" type="radio" />
+            <span>C#</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="D" class="with-gap" name="key" value="D" type="radio" />
+            <span>D</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="D#" class="with-gap" name="key" value="D#" type="radio" />
+            <span>D#</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="E" class="with-gap" name="key" value="E" type="radio" />
+            <span>E</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="F" class="with-gap" name="key" value="F" type="radio" />
+            <span>F</span>
+          </label>
+        </p>
+      </div>
+      <div class="keys">
+        <p class="key">
+          <label>
+            <input id="F#" class="with-gap" name="key" value="F#" type="radio" />
+            <span>F#</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="G" class="with-gap" name="key" value="G" type="radio" />
+            <span>G</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="G#" class="with-gap" name="key" value="G#" type="radio" />
+            <span>G#</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="A" class="with-gap" name="key" value="A" type="radio" />
+            <span>A</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="A#" class="with-gap" name="key" value="A#" type="radio" />
+            <span>A#</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="B" class="with-gap" name="key" value="B" type="radio" />
+            <span>B</span>
+          </label>
+        </p>
+      </div>
+      <p>Mode: </p> 
+      <div class="switch">
+        <label style="font-size:18px">
+          Minor
+          <input id="mode" name="mode" value="1" type="checkbox" checked>
+          <span class="lever"></span>
+          Major
+        </label>
+      </div>
+      <p style="margin-bottom:10px">Time Signature: </p>
+      <div class="keys">
+        <p class="key">
+          <label>
+            <input id="0" class="with-gap" name="time_signature" value="0" type="radio" checked />
+            <span>0/4</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="1" class="with-gap" name="time_signature" value="1" type="radio" />
+            <span>1/4</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="2" class="with-gap" name="time_signature" value="2" type="radio" />
+            <span>2/4</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="3" class="with-gap" name="time_signature" value="3" type="radio" />
+            <span>3/4</span>
+          </label>
+        </p>
+        <p class="key">
+          <label>
+            <input id="4" class="with-gap" name="time_signature" value="4" type="radio" />
+            <span>4/4</span>
+          </label>
+        </p>
+      </div>
+      <p class="center">
+        <input class="btn-floating btn-large submit" type="submit" value="yeet" />
+      </p> 
    </form>  
+
+    <script>
+      window.onload = function() {
+        var elems  = document.querySelectorAll("input[type=range]");
+        M.Range.init(elems);
+      };
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+      });
+    </script>
   </body>
 </html>
