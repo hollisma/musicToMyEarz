@@ -3,3 +3,8 @@ __pycache__/
 .vscode/
 
 .ipynb_checkpoints/
+
+node_modules
+package-lock.json
+css
+js
