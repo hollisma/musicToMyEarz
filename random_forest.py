@@ -68,4 +68,4 @@ def train_rforestreg_whole():
 
 def dump_rforestreg():
     rand_forest = train_rforestreg_whole()
-    joblib.dump(rand_forest, 'rand_forest.joblib')
+    joblib.dump(rand_forest, 'rand_forest.joblib.compress', compress = ('zlib', 5))
