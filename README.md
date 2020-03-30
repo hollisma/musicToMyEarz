@@ -1,4 +1,4 @@
-# musicToMyEarz
+# MusicToMyEarz
 
 ## About this Project
 
