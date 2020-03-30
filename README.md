@@ -22,3 +22,8 @@ Note: Before doing `flask run`, run `python3 rand_forest.py`. The trained Random
 Dataset source: [https://www.kaggle.com/zaheenhamidani/ultimate-spotify-tracks-db](https://www.kaggle.com/zaheenhamidani/ultimate-spotify-tracks-db)
 
 Description of Features: [https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/)
+
+## Links
+ - [Demo Video](https://www.youtube.com/watch?v=KLZYMpGFEXo)
+ - [Devpost](https://devpost.com/software/musictomyearz-fwqpz7)
+ - [How popularity score is determined](https://community.spotify.com/t5/Content-Questions/Artist-popularity/td-p/4415259)
